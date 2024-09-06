@@ -1,4 +1,4 @@
-from models.question import Question
+from app.data.models.question import Question
 
 class Menu:
     def __init__(self, id=0, question=None):

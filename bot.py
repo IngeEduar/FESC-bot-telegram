@@ -3,39 +3,10 @@ from telegram.ext import ApplicationBuilder, CommandHandler, CallbackQueryHandle
 from telegram.ext import CallbackContext
 import logging
 
-from services.MenuService import MenuService
-from services.QuestionService import QuestionService
+from app.services.MenuService import MenuService
+from app.services.QuestionService import QuestionService
 
-# Configurar logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
-
-# Define las respuestas de las preguntas frecuentes y sus submenús
-
-FAQS = {
-    "¿Cuál es tu nombre?": {
-        "res": "Soy un bot de asistencia.",
-        "submenu": {
-            "Nombre completo": "Mi nombre completo es Bot Assist.",
-            "¿Por qué me preguntas?": "Solo para conocerte mejor."
-        }
-    },
-    "¿Cómo puedo contactarte?": {
-        "res": "Puedes escribirme por aquí.",
-        "submenu": {
-            "Soporte técnico": "Nuestro soporte técnico está disponible 24/7.",
-            "Ventas": "Puedes contactar con ventas al correo ventas@example.com."
-        }
-    },
-    "¿Cuál es el horario de atención?": {
-        "res": "Atendemos de lunes a viernes de 9 AM a 6 PM.",
-        "submenu": {
-            "Vacaciones": "Estamos cerrados durante las vacaciones de diciembre.",
-            "Feriados": "Atendemos en los días feriados nacionales."
-        }
-    }
-}
-
-DEFAULT_RESPONSE = "Lo siento, no tengo la respuesta a esa pregunta."
 
 menuService = MenuService()
 menuService.pushMenu()

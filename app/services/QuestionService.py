@@ -1,5 +1,4 @@
-from models.menu import Menu
-from models.question import Question
+from app.data.models.question import Question
 
 class QuestionService:
 
