@@ -64,7 +64,7 @@ if __name__ == '__main__':
     #application.add_handler(CallbackQueryHandler(submenu_button, pattern='.*'))  # Manejar submenú
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
 
-    webhook_url = 'https://c295-38-252-236-215.ngrok-free.app'
+    webhook_url = 'https://2def-38-252-236-211.ngrok-free.app'
 
     # Configurar el webhook
     application.bot.set_webhook(url=webhook_url)

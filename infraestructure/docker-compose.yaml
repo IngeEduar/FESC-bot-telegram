@@ -1,0 +1,40 @@
+# TODO: Generate web service
+services:
+  bot:
+    build:
+      context: ../
+      dockerfile: Dockerfile
+    container_name: bot
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_DATABSE: servosis
+      DB_USER: servosis
+      DB_PASSWORD: f4P6G%sEjbdzZW7vznnnw8
+    ports:
+      - "0.0.0.0:5002:5002"
+    networks:
+      - bot
+      - data
+  
+  db:
+    image: postgres:13
+    container_name: database
+    environment:
+      POSTGRES_USER: servosis
+      POSTGRES_PASSWORD: f4P6G%sEjbdzZW7vznnnw8
+      POSTGRES_DB: servosis
+    networks:
+      - data
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+networks:
+  data:
+    driver: bridge
+  bot:
+    driver: bridge
+
+volumes:
+  pg_data: {}
