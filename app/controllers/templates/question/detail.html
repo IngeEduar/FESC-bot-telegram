@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de la Pregunta</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .question-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .question-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .question-response {
+            margin-bottom: 20px;
+        }
+        .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Detalles de la Pregunta</h1>
+
+<div class="question-container">
+    <div class="question-title">{{ question.get_question() }}</div>
+    <div class="question-response">{{ question.get_response() }}</div>
+
+    {% if question.get_options() != null %}
+        <h3>Opciones</h3>
+        <ul>
+            {% for option in question.get_options() %}
+                <li><a href="/question/{{ option.get_id() }}">{{ option.get_question() }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <a href="/question/add/{{ question.get_id() }}" class="btn">Crear pregunta hija</a>
+    <a href="/questions" class="btn">Volver a la lista</a>
+</div>
+
+
+</body>
+</html>

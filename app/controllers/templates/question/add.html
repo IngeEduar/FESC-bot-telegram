@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Nueva Pregunta</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .form-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .options-group {
+            margin-bottom: 10px;
+        }
+        .add-option-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 5px 10px;
+            margin-top: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Agregar Nueva Pregunta</h1>
+
+    <div class="form-container">
+        <form action="/question/add/{{ parent }}" method="POST">
+            <div class="form-group">
+                <label for="question">Pregunta</label>
+                <input type="text" id="question" name="question" placeholder="Ingrese la pregunta" required>
+            </div>
+            <div class="form-group">
+                <label for="response">Respuesta</label>
+                <textarea id="response" name="response" rows="4" placeholder="Ingrese la respuesta" required></textarea>
+            </div>
+
+            <button type="submit" class="btn">Guardar Pregunta</button>
+        </form>
+    </div>
+
+</body>
+</html>

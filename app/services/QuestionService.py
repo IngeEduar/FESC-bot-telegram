@@ -2,10 +2,59 @@ from app.data.models.question import Question
 
 class QuestionService:
 
-    questions = []
+    questions = [
+        Question(
+            id=0,
+            question="/start",
+            response="¡Hola! Soy tu asistente virtual. Elige una de las siguientes preguntas para obtener una respuesta.",
+            options=[
+                Question(
+                    id=1,
+                    question="¿Cuál es tu nombre?",
+                    response="Mi nombre es IngeEduarBot",
+                    options=[]
+                ),
+                Question(
+                    id=2,
+                    question="¿Cómo puedo contactarte?",
+                    response="Puedes escribirme por aquí.",
+                    options=[]
+                ),
+                Question(
+                    id=3,
+                    question="¿Cuál es el horario de atención?",
+                    response="Atendemos de lunes a viernes de 9 AM a 6 PM",
+                    options=[]
+                )
+            ]
+        ),
+        Question(
+            id=1,
+            question="¿Cuál es tu nombre?",
+            response="Mi nombre es IngeEduarBot",
+            options=[]
+        ),
+        Question(
+            id=2,
+            question="¿Cómo puedo contactarte?",
+            response="Puedes escribirme por aquí.",
+            options=[]
+        ),
+        Question(
+            id=3,
+            question="¿Cuál es el horario de atención?",
+            response="Atendemos de lunes a viernes de 9 AM a 6 PM",
+            options=[]
+        )
+    ]
 
     def getQuestionById(self, id):
         return self.questions[id]
+
+
+    def get_questions(self):
+        return self.questions
+
     
     def getQuestionByQuestion(self, search):
         for question in self.questions:
@@ -15,83 +64,19 @@ class QuestionService:
         return Question(
             response="Esta pregunta aún no tiene configurada una respuesta, lo sentimos"
         )
+
+    def add_question(self, question, parentId):
+        self.questions.append(question)
+
+        for questionParent in self.questions:
+            if parentId == questionParent.get_id():
+                newOptions = questionParent.get_options()
+                newOptions.append(question)
+                questionParent.set_options(newOptions)
+
+                self.questions[parentId] = questionParent
+
     
     def pushQuestions(self):
 
-        self.questions = [
-            Question(
-                id=2,
-                question="¿Cuál es tu nombre?",
-                response="Mi nombre es IngeEduarBot",
-                options=[
-                    Question(
-                        id=5,
-                        question="Ere un puto bestia",
-                        response="Lo sé mi rey",
-                        options=[]
-                    ),
-                    Question(
-                        id=6,
-                        question="De mayor quiero ser un inge como tú",
-                        response="Tú puede brother",
-                        options=[]
-                    ),
-                    Question(
-                        id=7,
-                        question="¿Eres Dios?",
-                        response="Yo tambien me lo pregunto hermano",
-                        options=[
-                            Question(
-                                id=8,
-                                question="Si que lo eres hemano",
-                                response="Muchas gracias brother",
-                                options=[]
-                            ),
-                        ]
-                    ),
-                ]
-            ),
-            Question(
-                id=3,
-                question="¿Cómo puedo contactarte?",
-                response="Puedes escribirme por aquí.",
-                options=[]
-            ),
-            Question(
-                id=4,
-                question="¿Cuál es el horario de atención?",
-                response="Atendemos de lunes a viernes de 9 AM a 6 PM",
-                options=[]
-            ),
-            Question(
-                id=5,
-                question="Ere un puto bestia",
-                response="Lo sé mi rey",
-                options=[]
-            ),
-            Question(
-                id=6,
-                question="De mayor quiero ser un inge como tú",
-                response="Tú puede brother",
-                options=[]
-            ),
-            Question(
-                id=7,
-                question="¿Eres Dios?",
-                response="Yo tambien me lo pregunto hermano",
-                options=[
-                    Question(
-                        id=8,
-                        question="Si que lo eres hemano",
-                        response="Muchas gracias brother",
-                        options=[]
-                    ),
-                ]
-            ),
-            Question(
-                id=8,
-                question="Si que lo eres hemano",
-                response="Muchas gracias brother",
-                options=[]
-            ),
-        ]
+        self.questions = self.questions

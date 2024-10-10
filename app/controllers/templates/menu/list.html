@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Menús</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .menu-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .menu-item {
+            border-bottom: 1px solid #ccc;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+        .menu-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .menu-options {
+            color: #555;
+        }
+        .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Lista de Menús</h1>
+
+    <div class="menu-container">
+        {% for menu in menus %}
+        <div class="menu-item">
+            <div>
+                <div class="menu-title">{{ menu.get_id() }} - /start</div>
+                <div class="menu-options">
+                    Opciones:
+                    <ul>
+                        <li>Texto: {{ menu.get_question().get_response() }}</li>
+                        <li>Opciones</li>
+                        <ul>
+                            {% for child in menu.get_question().get_options() %}
+                                <li>
+                                    Pregunta: <a href="/question/{{ child.get_id() }}">{{ child.get_question() }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </ul>
+                </div>
+            </div>
+            <a href="#" class="btn">Editar</a>
+        </div>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
