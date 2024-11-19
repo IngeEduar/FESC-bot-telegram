@@ -5,12 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agregar Nueva Pregunta</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
+            padding: 0 1rem;
         }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+        }
+
+        .info {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .info p {
+            font-size: 1.2rem;
+            color: #555;
+        }
+
         h1 {
             text-align: center;
             color: #333;
@@ -64,7 +90,13 @@
 </head>
 <body>
 
-    <h1>Agregar Nueva Pregunta</h1>
+    <header>
+        <h1>Servosis</h1>
+    </header>
+
+    <div class="info">
+        <p>Agregar Nueva Pregunta</p>
+    </div>
 
     <div class="form-container">
         <form action="/question/add/{{ parent }}" method="POST">
